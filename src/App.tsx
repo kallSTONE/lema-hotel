@@ -12,7 +12,9 @@ import Admin from '@/pages/Admin';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
-  if (typeof window !== 'undefined') window.scrollTo(0, 0);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return null;
 }
   
@@ -30,31 +32,22 @@ function SiteLayout() {
       return;
     }
 
-    // Hide header when first arriving at home.
     setChromeVisible(false);
 
-    // Watch the hero section — reveal the header only once the hero has
-    // scrolled almost entirely off-screen (i.e. the next section is about
-    // to reach the top of the viewport).
     const hero = document.querySelector('.hero') as HTMLElement | null;
     if (!hero) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // entry.isIntersecting is false when the hero is no longer visible.
-        setChromeVisible(!entry.isIntersecting);
-      },
-      {
-        // Fire when less than 5% of the hero is still on screen, meaning
-        // it has almost fully scrolled past the top.
-        threshold: 0.05,
-      }
-    );
+    const onScroll = () => {
+      // hero.getBoundingClientRect().bottom hits 0 exactly when the hero's
+      // bottom edge reaches the top of the screen — i.e. the next section
+      // is just touching the top of the viewport.
+      setChromeVisible(hero.getBoundingClientRect().bottom <= 0);
+    };
 
-    observer.observe(hero);
+    window.addEventListener('scroll', onScroll, { passive: true });
 
     return () => {
-      observer.disconnect();
+      window.removeEventListener('scroll', onScroll);
     };
   }, [isHome]);
 

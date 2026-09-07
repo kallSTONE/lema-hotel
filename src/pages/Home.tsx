@@ -124,7 +124,8 @@ export default function Home({ onBook }: { onBook: () => void }) {
         </div>
       </section>
 
-      <div className="services-circles">
+      <div className="home-content">
+        <div className="services-circles">
         {services.map((service) => {
           const IconComponent = service.icon;
           return (
@@ -283,6 +284,7 @@ export default function Home({ onBook }: { onBook: () => void }) {
           </div>
         </div>
       )}
+      </div>
     </main>
   );
 }

@@ -386,16 +386,27 @@ img {
    ========================================================= */
 
 .hero {
-  height: min(720px, calc(100vh - 80px));
-  min-height: 580px;
+  height: 100vh;
 
+  /* background-attachment: fixed keeps only the image pinned —
+     the hero content and all subsequent sections scroll normally */
   background-image: var(--hero-desktop);
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
 
   position: relative;
   color: #fff;
 }
+
+/* iOS doesn't support background-attachment: fixed inside scroll containers;
+   fall back to a normal scroll on touch devices */
+@supports (-webkit-touch-callout: none) {
+  .hero {
+    background-attachment: scroll;
+  }
+}
+
 
 .hero-overlay {
   position: absolute;
@@ -601,9 +612,16 @@ img {
    HERO CIRCLE OVERLAP
    ========================================================= */
 
+/* Content that scrolls over the sticky hero */
+.home-content {
+  position: relative;
+  z-index: 1;
+  background: var(--cream);
+}
+
 .services-circles {
   position: relative;
-  margin-top: -75px;
+  margin-top: 0;
   margin-left: 3%;
   margin-right: 3%;
   margin-bottom: 3%;
@@ -613,6 +631,7 @@ img {
   gap: 175px;
   justify-content: center;
   padding-left: 0;
+  padding-top: 40px;
 }
 
 .service-circle {
