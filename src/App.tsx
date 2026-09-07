@@ -31,23 +31,30 @@ function SiteLayout() {
     }
 
     // Hide header when first arriving at home.
-  
     setChromeVisible(false);
 
-    const onScroll = () => {
-      if (window.scrollY > 24) {
-        // Once revealed, keep it visible.
-        setChromeVisible(true);
-   
-        // We don't need to track scrolling anymore.
-        window.removeEventListener('scroll', onScroll);
-      }
-    };
+    // Watch the hero section — reveal the header only once the hero has
+    // scrolled almost entirely off-screen (i.e. the next section is about
+    // to reach the top of the viewport).
+    const hero = document.querySelector('.hero') as HTMLElement | null;
+    if (!hero) return;
 
-    window.addEventListener('scroll', onScroll, { passive: true });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        // entry.isIntersecting is false when the hero is no longer visible.
+        setChromeVisible(!entry.isIntersecting);
+      },
+      {
+        // Fire when less than 5% of the hero is still on screen, meaning
+        // it has almost fully scrolled past the top.
+        threshold: 0.05,
+      }
+    );
+
+    observer.observe(hero);
 
     return () => {
-      window.removeEventListener('scroll', onScroll);
+      observer.disconnect();
     };
   }, [isHome]);
 
