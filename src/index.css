@@ -387,16 +387,56 @@ img {
 
 .hero {
   height: 100vh;
+  position: relative;
+  color: #fff;
+  background: #071426;
+}
 
-  /* background-attachment: fixed keeps only the image pinned —
-     the hero content and all subsequent sections scroll normally */
-  background-image: var(--hero-desktop);
+.hero-image-layers,
+.hero-image-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-image-layer {
+  background-image: var(--hero-image-desktop);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  animation: hero-image-slide 40s ease-in-out infinite;
+  animation-delay: calc(var(--hero-image-order) * -8s);
+}
 
-  position: relative;
-  color: #fff;
+.hero > * {
+  z-index: 1;
+}
+
+@keyframes hero-image-slide {
+  0%,
+  20% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  25% {
+    opacity: 0;
+    transform: scale(1.045);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image-layer {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* iOS doesn't support background-attachment: fixed inside scroll containers;
@@ -3858,12 +3898,18 @@ footer .footer-brand {
   }
   
   .hero {
-    height: min(700px, 88vh);
-    min-height: 620px;
+    height: 100vh;
+    min-height: 100vh;
+    height: 100svh;
+    min-height: 100svh;
   
-    background-image: var(--hero-mobile);
     background-position: center;
   } 
+
+  .hero-image-layer {
+    background-image: var(--hero-image-mobile);
+    background-position: center;
+  }
 
 
   .hero-content {
@@ -4762,6 +4808,50 @@ body.lem-home-redesign .menu-button {
 
 body.lem-home-redesign .floating-book {
   display: none;
+}
+
+/* Keep the home navigation visible over the hero before the page is scrolled. */
+body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+  background: transparent;
+  border-bottom-color: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .brand {
+  color: #fff;
+}
+
+body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .brand img {
+  width: 58px;
+  height: 58px;
+  padding: 2px;
+  border: 1px solid var(--gold-light);
+  background: transparent;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
+}
+
+body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .nav-links,
+body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .lang-switch,
+body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .admin-trigger,
+body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .menu-button {
+  display: none;
+}
+
+body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .book-button {
+  background: transparent;
+  color: var(--gold-light);
+  border: 1px solid var(--gold-light);
+  box-shadow: none;
+}
+
+body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .book-button:hover {
+  background: var(--gold-light);
+  color: var(--navy);
 }
 
 @media (max-width: 1100px) {

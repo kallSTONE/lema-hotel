@@ -7,12 +7,28 @@ import { t, tr, rooms } from '@/data/content';
 const photos = {
   heroMobile: '/assets/Images/welcome-Phone.webp',
   hero: '/assets/Images/welcome.webp',
+  heroAlternate: '/assets/Images/NightView.webp',
+  heroAlternateMobile: '/assets/Images/NightView.webp',
+  heroThird: '/assets/Images/Buildingshot.webp',
+  heroThirdMobile: '/assets/Images/Buildingshot.webp',
+  heroFourth: '/assets/Images/LemHotelVenue.webp',
+  heroFourthMobile: '/assets/Images/LemHotelVenue.webp',
+  heroFifth: '/assets/Images/Stage.webp',
+  heroFifthMobile: '/assets/Images/Stage.webp',
   room: '/assets/Images/img3.webp', 
   roomTwo: '/assets/Images/img2.webp', 
   dining: '/assets/Images/LemHotelVenue.webp', 
   pool: '/assets/Images/NightView.webp', 
   spa: '/assets/Images/Stage.webp', 
 };
+
+const heroImages = [
+  { desktop: photos.hero, mobile: photos.heroMobile },
+  { desktop: photos.heroAlternate, mobile: photos.heroAlternateMobile },
+  { desktop: photos.heroThird, mobile: photos.heroThirdMobile },
+  { desktop: photos.heroFourth, mobile: photos.heroFourthMobile },
+  { desktop: photos.heroFifth, mobile: photos.heroFifthMobile },
+];
 
 const services = [
   {
@@ -86,11 +102,20 @@ export default function Home({ onBook }: { onBook: () => void }) {
     <main>
       <section
         className="hero"
-        style={{
-          '--hero-desktop': `url(${activeService ? services.find(s => s.id === activeService)?.image : photos.hero})`,
-          '--hero-mobile': `url(${activeService ? services.find(s => s.id === activeService)?.image : photos.heroMobile})`,
-        } as CSSProperties}
       >
+        <div className="hero-image-layers" aria-hidden="true">
+          {heroImages.map((image, index) => (
+            <div
+              className="hero-image-layer"
+              key={image.desktop}
+              style={{
+                '--hero-image-desktop': `url(${activeService ? services.find(s => s.id === activeService)?.image : image.desktop})`,
+                '--hero-image-mobile': `url(${activeService ? services.find(s => s.id === activeService)?.image : image.mobile})`,
+                '--hero-image-order': index,
+              } as CSSProperties}
+            />
+          ))}
+        </div>
         <div className="hero-overlay" />
         <div className="hero-content">
           <p className="eyebrow light">{tr(t.hero.eyebrow, lang)}</p>
