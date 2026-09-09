@@ -1487,7 +1487,7 @@ img {
 }
 
 .footer-map {
-  height: 260px;
+  height: 320px;
   overflow: hidden;
   border: 1px solid rgba(229, 201, 141, 0.45);
   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.2);
@@ -4181,7 +4181,7 @@ footer .footer-brand {
 
   .footer-cta {
     padding: 70px 8%;
-
+    font-size: 6px; 
     display: block;
   }
 

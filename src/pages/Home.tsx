@@ -17,7 +17,7 @@ const photos = {
   heroFifthMobile: '/assets/Images/Stage.webp',
   room: '/assets/Images/room1.webp', 
   roomTwo: '/assets/Images/room2.webp', 
-  dining: '/assets/Images/menu/Doro-wat.webp', 
+  dining: '/assets/Images/menu/dorowat.webp', 
   pool: '/assets/Images/NightView.webp', 
   spa: '/assets/Images/Stage.webp', 
 }; 

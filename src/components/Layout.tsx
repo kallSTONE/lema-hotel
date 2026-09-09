@@ -129,18 +129,18 @@ export function Footer({ onBook }: { onBook: () => void }) {
     <>
       <section className="footer-cta">
         <div className="footer-cta-copy">
-          <p className="eyebrow light">{tr(t.hero.eyebrow, lang)}</p>
+          <p className="eyebrow light ">{tr(t.hero.eyebrow, lang)}</p>
           <h2>{tr(t.hero.title1, lang)}<br /><em>{tr(t.hero.title2, lang)}</em></h2>
           <p className="footer-location"><MapPin size={16} /> {tr(t.footer.location, lang)}</p>
           <button className="primary-button" onClick={onBook}>{tr(t.nav.book, lang)} <ArrowUpRight size={18} /></button>
         </div>
         <div className="footer-map">
-          <iframe
-            src="https://www.google.com/maps?q=Lema+Hotel+Hossana+Ethiopia&output=embed"
-            title="Lema Hotel location on Google Maps"
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
+        <iframe
+          src="https://www.google.com/maps?q=7.544521447496669,37.85091373331766&output=embed&t=k&z=18"
+          title="Lema Hotel location on Google Maps"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
         </div>
       </section>
 
