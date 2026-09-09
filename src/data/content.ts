@@ -146,7 +146,7 @@ export const staff = [
 export const nearbySites = [
   {
     name: { en: 'Ajora Waterfall', am: 'አጆራ ፏፏቴ', had: 'Ajora Fisha' },
-    desc: { en: 'A stunning twin waterfall nestled in the Hossana countryside. A short drive from the hotel, best visited in the morning light.', am: 'በሆሳዕና አካባቢ ያለ ትልቅ መንትያ የውሃ ፏፏቴ።', had: 'Twin waterfall near Hossana.' },
+    desc: { en: 'A stunning  twin waterfall nestled in the Hossana countryside. A short drive from the hotel, best visited in the morning light.', am: 'በሆሳዕና አካባቢ ያለ ትልቅ መንትያ የውሃ ፏፏቴ።', had: 'Twin waterfall near Hossana.' },
     distance: '18 km', 
     image: '/assets/Images/attractions/ajora.webp',
     Images: [
@@ -175,8 +175,12 @@ export const nearbySites = [
     name: { en: 'Shenkola Mountain', am: 'ሸንቆላ ተራራ', had: 'Shenkola Tulla' },
     desc: { en: 'A scenic mountain landscape outside Hossana, known for sunrise views and fresh highland air.', am: 'ከሆሳዕና በቅርብ ርቀት የሚገኝ ውብ ተራራ እና የንጋት እይታ።', had: 'Mountain view area with cool highland air.' },
     distance: '27 km',
-    image: '/assets/Images/attractions/shenqola.jpg',
-    Images: ['/assets/Images/attractions/shenqola.jpg'],
+    image: '/assets/Images/attractions/shenkola.webp',
+    Images: [
+      '/assets/Images/attractions/shenkola1.webp',
+      '/assets/Images/attractions/shenkola.webp',
+      '/assets/Images/attractions/shenqola.jpg',
+            ], 
   },
   
   {
