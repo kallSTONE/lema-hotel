@@ -220,6 +220,7 @@ export const nearbySites = [
 
 export const t = {
   nav: {
+    brand: { en: 'Lema Hotel Hossana', am: 'ለማ ሆቴል ሆሳዕና', had: 'Lema Hotel Hossana' },
     home: { en: 'Home', am: 'መነሻ', had: 'Wode' },
     rooms: { en: 'Rooms', am: 'ክፍሎች', had: 'Baatte' },
     menu: { en: 'Menu', am: 'ሜኑ', had: 'Mennu' },

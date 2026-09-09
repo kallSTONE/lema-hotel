@@ -59,11 +59,11 @@ export function LanguageSwitch() {
     { code: 'am', label: 'አማርኛ', short: 'አማ' },
     { code: 'had', label: 'Hadiyissa', short: 'Had' },
   ];
-  const current = langs.find(l => l.code === lang)!;
+  const switchTo = lang === 'en' ? 'am' : 'en';
   return (
     <div className="lang-switch">
       <button onClick={() => setOpen(!open)} className={open ? 'active' : ''}> 
-        <Globe size={15} /> {current.short} <ChevronDown size={13} className={open ? 'rotated' : ''} />
+        <Globe size={15} /> {langs.find(l => l.code === switchTo)?.short} <ChevronDown size={13} className={open ? 'rotated' : ''} />
       </button>
       {open && (
         <div className="lang-dropdown">
@@ -95,7 +95,7 @@ export function Navbar({ onBook, chromeVisible }: { onBook: () => void; chromeVi
       <header className={`nav-wrap ${location.pathname === '/' ? 'home-chrome' : ''} ${chromeVisible ? 'is-visible' : 'is-hidden'}`}>
         <Link className="brand" to="/">
           <img src="/logo.png" alt="Lema Hotel Hossana" />
-          <span>Lema Hotel Hossana</span>
+          <span>{tr(t.nav.brand, lang)}</span>
         </Link>  
         <nav className={menuOpen ? 'nav-links mobile-visible' : 'nav-links'}> 
           {navItems.map(item => (

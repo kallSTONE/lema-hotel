@@ -4836,16 +4836,34 @@ body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .brand img {
 }
 
 body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .nav-links,
-body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .lang-switch,
 body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .admin-trigger,
 body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .menu-button {
   display: none;
+}
+
+body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .lang-switch {
+  display: block;
+}
+
+body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .lang-switch > button {
+  color: var(--gold-light);
+  background: transparent;
+  border-color: var(--gold-light);
+  box-shadow: none;
+}
+
+body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .lang-switch > button:hover,
+body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .lang-switch > button.active {
+  color: var(--navy);
+  background: var(--gold-light);
+  border-color: var(--gold-light);
 }
 
 body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .book-button {
   background: transparent;
   color: var(--gold-light);
   border: 1px solid var(--gold-light);
+  display: flex;
   box-shadow: none;
 }
 
@@ -4881,6 +4899,53 @@ body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .book-button:hover 
 }
 
 @media (max-width: 800px) {
+  body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden {
+    padding: 0 4%;
+  }
+
+  body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .brand {
+    gap: 6px;
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    min-width: 0;
+  }
+
+  body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .brand img {
+    width: 36px;
+    height: 36px;
+  }
+
+  body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .nav-actions {
+    gap: 6px;
+  }
+
+  body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .lang-switch > button {
+    gap: 3px;
+    padding: 4px 5px;
+    font-size: 9px;
+  }
+
+  body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .lang-switch > button svg:first-child {
+    width: 12px;
+    height: 12px;
+  }
+
+  body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .lang-switch > button svg:last-child {
+    width: 10px;
+    height: 10px;
+  }
+
+  body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .book-button {
+    gap: 4px;
+    padding: 8px 9px;
+    font-size: 9px;
+  }
+
+  body:not(.lem-home-redesign) .nav-wrap.home-chrome.is-hidden .book-button svg {
+    width: 13px;
+    height: 13px;
+  }
+
   body.lem-home-redesign .nav-wrap,
   body.lem-home-redesign .nav-wrap.home-chrome,
   body.lem-home-redesign .nav-wrap.home-chrome.is-visible {
