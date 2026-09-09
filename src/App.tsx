@@ -77,7 +77,7 @@ function SiteLayout() {
         <Route path="/nearby" element={<Nearby />} />
       </Routes>
 
-      <Footer />
+      <Footer onBook={() => setBookingOpen(true)} />
 
       <FloatingBookButton
         onBook={() => setBookingOpen(true)}

@@ -1,6 +1,6 @@
 import { useState, useEffect, FormEvent, ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ArrowUpRight, Bell, Check, ChevronDown, Globe, LayoutDashboard, Menu, X } from 'lucide-react';
+import { ArrowUpRight, Bell, Check, ChevronDown, Globe, LayoutDashboard, MapPin, Menu, X } from 'lucide-react';
 import { useLang } from '@/context/LangContext'; 
 import { t, rooms, type Lang } from '@/data/content'; 
   
@@ -123,19 +123,38 @@ export function Navbar({ onBook, chromeVisible }: { onBook: () => void; chromeVi
   );
 }
 
-export function Footer() {
+export function Footer({ onBook }: { onBook: () => void }) {
   const { lang } = useLang();
   return (
-    <footer>
-      <div className="footer-brand">
-        <img src="/image.png" alt="Lema Hotel" />
-        <span>LEMA HOTEL<small>HOSSANA · ETHIOPIA</small></span>
-      </div>
-      <p>{tr(t.footer.tagline, lang)}</p>
-      <div className="footer-social">
-        <span>{tr(t.footer.rights, lang)}</span>
-      </div> 
-    </footer>
+    <>
+      <section className="footer-cta">
+        <div className="footer-cta-copy">
+          <p className="eyebrow light">{tr(t.hero.eyebrow, lang)}</p>
+          <h2>{tr(t.hero.title1, lang)}<br /><em>{tr(t.hero.title2, lang)}</em></h2>
+          <p className="footer-location"><MapPin size={16} /> {tr(t.footer.location, lang)}</p>
+          <button className="primary-button" onClick={onBook}>{tr(t.nav.book, lang)} <ArrowUpRight size={18} /></button>
+        </div>
+        <div className="footer-map">
+          <iframe
+            src="https://www.google.com/maps?q=Lema+Hotel+Hossana+Ethiopia&output=embed"
+            title="Lema Hotel location on Google Maps"
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
+      </section>
+
+      <footer>
+        <div className="footer-brand">
+          <img src="/image.png" alt="Lema Hotel" />
+          <span>LEMA HOTEL<small>HOSSANA · ETHIOPIA</small></span>
+        </div>
+        <p>{tr(t.footer.tagline, lang)}</p>
+        <div className="footer-social">
+          <span>{tr(t.footer.rights, lang)}</span>
+        </div>
+      </footer>
+    </>
   );
 }
 

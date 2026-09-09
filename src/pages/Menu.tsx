@@ -19,7 +19,7 @@ export default function Menu() {
   
   return (
     <main>
-      <PageHeader title={tr(t.menu.title, lang)} subtitle={tr(t.menu.subtitle, lang)} image="/assets/Images/LemHotelVenue.jpg" />
+      <PageHeader title={tr(t.menu.title, lang)} subtitle={tr(t.menu.subtitle, lang)} image="/assets/Images/restaurant1.webp" />
       <section className="menu-section section-pad">
         <div className="menu-controls">
           <div className="menu-search">

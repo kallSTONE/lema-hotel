@@ -17,10 +17,10 @@ const photos = {
   heroFifthMobile: '/assets/Images/Stage.webp',
   room: '/assets/Images/room1.webp', 
   roomTwo: '/assets/Images/room2.webp', 
-  dining: '/assets/Images/LemHotelVenue.webp', 
+  dining: '/assets/Images/menu/Doro-wat.webp', 
   pool: '/assets/Images/NightView.webp', 
   spa: '/assets/Images/Stage.webp', 
-};
+}; 
 
 const heroImages = [
   { desktop: photos.hero, mobile: photos.heroMobile },
@@ -111,7 +111,7 @@ export default function Home({ onBook }: { onBook: () => void }) {
               style={{
                 '--hero-image-desktop': `url(${activeService ? services.find(s => s.id === activeService)?.image : image.desktop})`,
                 '--hero-image-mobile': `url(${activeService ? services.find(s => s.id === activeService)?.image : image.mobile})`,
-                '--hero-image-order': index,
+                '--hero-image-delay': `${index * -6}s`,
               } as CSSProperties}
             />
           ))}
@@ -280,14 +280,6 @@ export default function Home({ onBook }: { onBook: () => void }) {
           <img src={photos.pool} alt="Pool" />
           <img src={rooms[1].image} alt="Room" />
         </div>
-      </section>
-
-      <section className="footer-cta">
-        <div>
-          <p className="eyebrow light">{tr(t.hero.eyebrow, lang)}</p>
-          <h2>{tr(t.hero.title1, lang)}<br /><em>{tr(t.hero.title2, lang)}</em></h2>
-        </div>
-        <button className="primary-button" onClick={onBook}>{tr(t.nav.book, lang)} <ArrowUpRight size={18} /></button>
       </section>
 
       {isVideoOpen && (
