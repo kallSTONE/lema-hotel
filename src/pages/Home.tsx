@@ -23,9 +23,10 @@ const photos = {
 }; 
 
 const heroImages = [
-  { desktop: photos.hero, mobile: photos.heroMobile },
   { desktop: photos.heroAlternate, mobile: photos.heroAlternateMobile },
-  { desktop: photos.heroThird, mobile: photos.heroThirdMobile },
+  { desktop: photos.hero, mobile: photos.heroMobile },
+  { desktop: photos.heroThird, mobile: photos.heroThirdMobile },  
+  { desktop: photos.heroAlternate, mobile: photos.heroAlternateMobile },
   { desktop: photos.heroFourth, mobile: photos.heroFourthMobile },
   { desktop: photos.heroFifth, mobile: photos.heroFifthMobile },
 ];
