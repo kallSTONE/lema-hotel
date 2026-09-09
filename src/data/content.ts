@@ -233,7 +233,7 @@ export const t = {
   },
   hero: {
     eyebrow: { en: 'Great Comfort, Lexury and hospitality', am: 'የላቀ ምቾት፣ ጥራትና ምርጥ መስተንግዶ', had: 'Xiqqa xiiya gorsu' },
-    title1: { en: 'Stay awhile.', am: 'ትንሽ ይቆዪ።', had: 'Xiqqa baaru.' },
+    title1: { en: 'Stay awhile.', am: ' ', had: 'Xiqqa baaru.' },
     title2: { en: 'Feel at home.', am: 'ከቤትዎ ውጭ ሁለተኛ ቤትዎ።', had: 'Lampe geeshsha.' },
     welcome: { en: 'Welcome to Lema.', am: 'ወደ ለማ እንኳን በደህና መጡ።', had: 'Lemma gidaa welcome.' },
     copy: { en: 'A quiet, considered hotel in the heart of Hossana. Come for the view, stay for the warmth.', am: 'በሆሳዕና እምብርት ጥራት ያለው ሆቴል።', had: 'Hossana giddo quiet hotel.' },
