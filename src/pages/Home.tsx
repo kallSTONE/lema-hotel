@@ -9,7 +9,7 @@ const photos = {
   hero: '/assets/Images/welcome.webp',
   heroAlternate: '/assets/Images/NightView.webp',
   heroAlternateMobile: '/assets/Images/NightView.webp',
-  heroThird: '/assets/Images/Buildingshot.webp',
+  heroThird: '/assets/Images/building.webp',
   heroThirdMobile: '/assets/Images/Buildingshot.webp',
   heroFourth: '/assets/Images/LemHotelVenue.webp',
   heroFourthMobile: '/assets/Images/LemHotelVenue.webp',
