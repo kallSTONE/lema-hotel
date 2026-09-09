@@ -175,10 +175,11 @@ export const nearbySites = [
     name: { en: 'Shenkola Mountain', am: 'ሸንቆላ ተራራ', had: 'Shenkola Tulla' },
     desc: { en: 'A scenic mountain landscape outside Hossana, known for sunrise views and fresh highland air.', am: 'ከሆሳዕና በቅርብ ርቀት የሚገኝ ውብ ተራራ እና የንጋት እይታ።', had: 'Mountain view area with cool highland air.' },
     distance: '27 km',
-    image: '/assets/Images/attractions/shenkola.webp',
+    image: '/assets/Images/attractions/shenkolaM.webp',
     Images: [
       '/assets/Images/attractions/shenkola1.webp',
       '/assets/Images/attractions/shenkola.webp',
+      '/assets/Images/attractions/shenkolaM.webp',
       '/assets/Images/attractions/shenqola.jpg',
             ], 
   },
