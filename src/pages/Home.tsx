@@ -22,6 +22,34 @@ const photos = {
   spa: '/assets/Images/Stage.webp', 
 }; 
 
+const culturalTours = [
+  {
+    image: '/assets/Images/tour/tour11.webp',
+    title: 'The Hadiya "Yahudie" annual festival',
+    description:
+      'Dr. Abiy Ahmed, the Prime Minister of Ethiopia, attended the Hadiya "Yahudie" annual festival in Hossana City, showcasing the cultural richness and diversity of the region.',
+  },
+  {
+    image: '/assets/Images/tour/tour2.webp',
+    title: 'Cultural richness & diversity',
+    description:
+      'Experience the rich cultural traditions, heritage, and diversity of the Hadiya people.',
+  },
+  {
+    image: '/assets/Images/tour/tour5.webp',
+    title: 'Dr Abiy Ahmed at HOSSANA CITY',
+    description:
+      'Discover memorable moments and important cultural events taking place in Hossana City.',
+  },
+  {
+    image: '/assets/Images/tour/tour4.webp',
+    title: 'The Hadiya "Yahudie" annual festival',
+    description:
+      'The Hadiya "Yahudie" annual festival is noted as a unique cultural feature, promoting unity, compassion, and forgiveness.',
+  },
+];
+
+
 const heroImages = [
   { desktop: photos.heroAlternate, mobile: photos.heroAlternateMobile },
   { desktop: photos.hero, mobile: photos.heroMobile },
@@ -267,6 +295,30 @@ export default function Home({ onBook }: { onBook: () => void }) {
           <div className="stars"><Star size={13} fill="currentColor" /><Star size={13} fill="currentColor" /><Star size={13} fill="currentColor" /><Star size={13} fill="currentColor" /><Star size={13} fill="currentColor" /></div>
         </div>
       </section>
+
+      {/* CULTURAL TOUR SECTION */}
+      <section className="cultural-section">
+        <div className="cultural-grid">
+          {culturalTours.map((tour, index) => (
+            <article className="cultural-card" key={tour.image}>
+              <img
+                src={tour.image}
+                alt={tour.title}
+                className="cultural-card-image"
+              />
+
+              <div className="cultural-card-overlay" />
+
+              <div className="cultural-card-content">
+                <p className="cultural-card-text">
+                  {tour.description}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
 
       <section className="gallery-section section-pad">
         <div className="section-heading">
