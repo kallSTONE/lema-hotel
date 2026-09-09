@@ -55,6 +55,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -74,6 +75,7 @@ body {
     );
   font-size: 15px;
   line-height: 1.5;
+  overflow-x: hidden;
 }
 
 button,
@@ -390,6 +392,7 @@ img {
   position: relative;
   color: #fff;
   background: #071426;
+  overflow: hidden;
 }
 
 .hero-image-layers,
@@ -3990,13 +3993,14 @@ footer .footer-brand {
 
   .services-circles {
     margin-top: -94px;
-    gap: 12px;
+    gap: 0;
     margin-left: 2%;
     margin-right: 2%;
+    justify-content: space-between;
   }
 
   .service-circle {
-    width: 98px;
+    width: 25%;
   }
 
   .service-circle-image {
@@ -4370,7 +4374,7 @@ footer .footer-brand {
   }
 
   .service-circle {
-    width: 82px;
+    width: 25%;
     padding: 8px 6px 10px;
   }
 
