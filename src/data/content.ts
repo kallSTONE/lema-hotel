@@ -137,10 +137,10 @@ export const galleryImages = [
 ];
 
 export const staff = [
-  { name: 'Tadesse Bekele', role: { en: 'General Manager', am: 'ዋና አስተዳዳሪ', had: 'General Manager' }, image: '/assets/Images/InfluencerPhotoinlemhotel.webp', bio: { en: 'Twenty years in Ethiopian hospitality. Tadesse believes every guest is family.', am: 'ለሀያ ዓመታት በኢትዮጵያ መስተንግዶ።', had: '20 years hospitality.' } },
-  { name: 'Helen Girma', role: { en: 'Head Chef', am: 'ዋና ሼፍ', had: 'Head Chef' }, image: '/assets/Images/photo0jpg.jpg', bio: { en: 'Helen brings Hossana\'s flavours to every plate. Trained in Addis Ababa and Florence.', am: 'የሆሳዕናን ጣዕሞች ወደ ማዕድነት ትቀይራለች።', had: 'Hossana flavours, trained Addis & Florence.' } },
-  { name: 'Solomon Abera', role: { en: 'Guest Relations', am: 'የእንግዶች ግንኙነት', had: 'Guest Relations' }, image: '/assets/Images/LemHotelCertificates.webp', bio: { en: 'Solomon knows Hossana\'s every corner and loves sharing hidden gems with guests.', am: 'ሰሎሞን የሆሳዕናን ሁሉንም ጥልቅ ይወቃል።', had: 'Knows Hossana well.' } },
-  { name: 'Marta Tola', role: { en: 'Housekeeping Manager', am: 'የቤት ጥበቃ አስተዳዳሪ', had: 'Housekeeping Manager' }, image: '/assets/Images/LemHotelTophies.webp', bio: { en: 'Marta leads our housekeeping team with a quiet, meticulous care.', am: 'ማርታ የቤት ጥበቃ ቡድንን ትመራለች።', had: 'Leads housekeeping team.' } },
+  { name: 'Degu Lema', role: { en: 'Co-Owner', am: 'ባለቤት', had: 'Manager' }, image: '/assets/Images/people/degulema.webp', bio: { en: 'Twenty years in Ethiopian hospitality. Degu believes every guest is family.', am: 'ለሀያ ዓመታት በኢትዮጵያ', had: '20 years hospitality.' } },
+  { name: 'Ashenafi Lema', role: { en: 'Co-Owner', am: 'ባለቤት', had: 'Manager' }, image: '/assets/Images/people/degulema.webp', bio: { en: ' brings Hossana\'s flavours to every plate. Trained in Addis Ababa and Florence.', am: 'የሆሳዕናን ጣዕሞች ወደ ማዕድነት', had: 'Hossana flavours, trained Addis & Florence.' } },
+  { name: 'Mule Lema', role: { en: 'Co-Owner', am: 'ባለቤት', had: 'Manager' }, image: '/assets/Images/people/degulema.webp', bio: { en: ' knows Hossana\'s every corner and loves sharing hidden gems with guests.', am: ' የሆሳዕናን ሁሉንም ጥልቅ ይወቃል።', had: 'Knows Hossana well.' } },
+  { name: 'Cheru Lema', role: { en: 'Co-Owner', am: 'ባለቤት', had: 'Manager' }, image: '/assets/Images/people/degulema.webp', bio: { en: ' leads our housekeeping team with a quiet, meticulous care.', am: ' የቤት ጥበቃ ቡድንን ትመራለች።', had: 'Leads housekeeping team.' } },
 ];
    
 export const nearbySites = [
