@@ -4,12 +4,14 @@ import {
   ArrowUpRight, BedDouble, Bell, CalendarDays, Check, ChevronRight, Edit3,
   LayoutDashboard, MessageCircle, MoreHorizontal, Plus, Settings, Sparkles,
   Star, Trash2, Utensils, Users, X,
+  Save, 
+  Download,
 } from 'lucide-react';
 import { useLang } from '@/context/LangContext';
 import { t, tr, rooms } from '@/data/content';
 import { BookingModal } from '@/components/Layout';
    
-type AdminPage = 'overview' | 'bookings' | 'tables' | 'reviews' | 'announcements' | 'rooms' | 'settings';
+type AdminPage = 'overview' | 'bookings' | 'tables' | 'reviews' | 'announcements' |'menu' | 'rooms' | 'settings';
       
 type Booking = { id: number; guest: string; room: string; dates: string; status: 'Confirmed' | 'Pending' };
 type TableRes = { id: number; name: string; size: number; time: string; status: 'Seated' | 'Waiting' | 'Reserved' };
@@ -37,6 +39,16 @@ const initialReviews: Review[] = [
   { id: 3, guest: 'Selam T.', rating: 4, text: 'Beautiful rooms and incredible food. The doro wat is the best I\'ve had in Ethiopia.', date: 'Aug 12, 2026' },
 ];
 
+type MenuType = 'breakfast' | 'lunch' | 'dinner' | 'drinks';
+
+const menuImages: Record<MenuType, string> = {
+  breakfast: '/menus/breakfast-menu.jpg',
+  lunch: '/menus/lunch-menu.jpg',
+  dinner: '/menus/dinner-menu.jpg',
+  drinks: '/menus/drinks-menu.jpg',
+};
+
+
 export default function Admin() {
   const { lang } = useLang();
   const navigate = useNavigate();
@@ -57,9 +69,10 @@ export default function Admin() {
     { key: 'bookings', icon: CalendarDays, label: tr(t.admin.bookings, lang), badge: bookings.length },
     { key: 'tables', icon: Utensils, label: tr(t.admin.tables, lang) },
     { key: 'reviews', icon: MessageCircle, label: tr(t.admin.reviews, lang), badge: reviews.length },
-    { key: 'announcements', icon: Bell, label: tr(t.admin.announcements, lang) },
+    { key: 'announcements', icon: Bell, label: tr(t.admin.announcements, lang) },    
+    { key: 'menu', icon: BedDouble, label: tr(t.admin.menu, lang) },
     { key: 'rooms', icon: BedDouble, label: tr(t.admin.rooms, lang) },
-    { key: 'settings', icon: Settings, label: tr(t.admin.settings, lang) },
+    { key: 'settings', icon: Settings, label: tr(t.admin.settings, lang) },   
   ];
 
   const toggleBookingStatus = (id: number) => {
@@ -72,6 +85,28 @@ export default function Admin() {
   };
   const deleteReview = (id: number) => setReviews(prev => prev.filter(r => r.id !== id));
 
+  const [activeMenu, setActiveMenu] = useState<MenuType>('breakfast');
+  const [editingMenu, setEditingMenu] = useState<MenuType | null>(null);
+  const [menuModalOpen, setMenuModalOpen] = useState(false);
+  
+
+  const menuImages = {
+    breakfast: 'assets/Images/menu4.jpg',
+    lunch: 'assets/Images/menu1.webp',
+    dinner: 'assets/Images/menu2.webp',
+    drinks: 'assets/Images/menu3.jpg',
+  };
+
+  const downloadMenu = (menu: MenuType) => {
+    const link = document.createElement('a');
+    link.href = menuImages[menu];
+    link.download = `${menu}-menu.jpg`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+  
+  
   return (
     <div className="admin-panel">
       <BookingModal open={bookingModalOpen} onClose={() => setBookingModalOpen(false)} />
@@ -91,14 +126,14 @@ export default function Admin() {
       <div className="admin-body">
         <aside className={mobileSidebar ? 'mobile-visible' : ''}>
           <p className="side-label">{tr(t.admin.workspace, lang)}</p>
-          {navItems.slice(0, 5).map(item => (
+          {navItems.slice(0, 6).map(item => (
             <button key={item.key} className={page === item.key ? 'active' : ''} onClick={() => setPage(item.key)}>
               <item.icon size={17} /> {item.label}
               {item.badge ? <b>{item.badge}</b> : null}
             </button>
           ))}
           <p className="side-label second">{tr(t.admin.manage, lang)}</p>
-          {navItems.slice(5).map(item => (
+          {navItems.slice(6).map(item => (
             <button key={item.key} className={page === item.key ? 'active' : ''} onClick={() => setPage(item.key)}>
               <item.icon size={17} /> {item.label}
             </button>
@@ -227,6 +262,214 @@ export default function Admin() {
                 <button className="save-button" onClick={() => navigate('/')}><Check size={16} /> {tr(t.admin.publish, lang)}</button>
               </div>
             </>
+          )}          
+          {page === 'menu' && (
+            <>
+              <div className="dashboard-header">
+                <div>
+                  <p className="eyebrow">{tr(t.admin.manage, lang)}</p>
+                  <h1>Print Menus</h1>
+                </div>
+              </div>
+
+              <div className="menu-manager">
+                {/* Menu tabs */}
+                <div className="menu-tabs">
+                  {(
+                    [
+                      { id: 'breakfast', label: 'Breakfast' },
+                      { id: 'lunch', label: 'Lunch' },
+                      { id: 'dinner', label: 'Dinner' },
+                      { id: 'drinks', label: 'Drinks' },
+                    ] satisfies { id: MenuType; label: string }[]
+                  ).map((menu) => (
+                    <button
+                      key={menu.id}
+                      className={`menu-tab ${activeMenu === menu.id ? 'active' : ''}`}
+                      onClick={() => setActiveMenu(menu.id)}
+                    >
+                      {menu.label}
+                    </button>
+                  ))}
+                </div>
+
+
+                {/* Menu content */}
+                <div className="dashboard-card full menu-card">
+                  <div className="menu-card-header">
+                    <div>
+                      <p className="eyebrow">PRINT READY</p>
+                      <h2>
+                        {activeMenu.charAt(0).toUpperCase() + activeMenu.slice(1)} Menu
+                      </h2>
+                      <span className="menu-meta">
+                        A4 · Portrait · English / Amharic / Hadiyissa
+                      </span>
+                    </div>
+
+                    <div className="menu-actions">
+                      <button
+                        className="secondary-btn"
+                        onClick={() => downloadMenu(activeMenu)}
+                      >
+                        <Download size={16} />
+                        Download
+                      </button>
+
+                      <button
+                        className="primary-btn"
+                        onClick={() => {
+                          setEditingMenu(activeMenu);
+                          setMenuModalOpen(true);
+                        }}
+                      >
+                        <Edit3 size={16} />
+                        Edit Menu
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Print-ready preview */}
+                  <div className="menu-preview-wrapper">
+                    <div className="menu-preview">
+                      <img
+                        src={menuImages[activeMenu]}
+                        alt={`${activeMenu} menu`}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Edit modal */}
+              {menuModalOpen && (
+                <div
+                  className="modal-backdrop"
+                  onClick={() => setMenuModalOpen(false)}
+                >
+                  <div
+                    className="menu-modal"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <div className="modal-header">
+                      <div>
+                        <p className="eyebrow">MENU EDITOR</p>
+                        <h2>Edit {editingMenu} Menu</h2>
+                      </div>
+
+                      <button
+                        className="modal-close"
+                        onClick={() => setMenuModalOpen(false)}
+                      >
+                        <X size={18} />
+                      </button>
+                    </div>
+
+                    <div className="modal-body">
+                      <div className="form-group">
+                        <label>Menu title</label>
+                        <input
+                          type="text"
+                          defaultValue={`${editingMenu
+                            .charAt(0)
+                            .toUpperCase()}${editingMenu.slice(1)} Menu`}
+                        />
+                      </div>
+
+                      <div className="form-row">
+                        <div className="form-group">
+                          <label>Language</label>
+                          <select defaultValue="en">
+                            <option value="en">English</option>
+                            <option value="am">Amharic</option>
+                            <option value="ha">Hadiyissa</option>
+                          </select>
+                        </div>
+
+                        <div className="form-group">
+                          <label>Currency</label>
+                          <select defaultValue="ETB">
+                            <option value="ETB">ETB — Ethiopian Birr</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="form-group">
+                        <label>Menu description</label>
+                        <textarea
+                          rows={3}
+                          defaultValue="Freshly prepared dishes from Lema Hotel."
+                        />
+                      </div>
+
+                      <div className="form-section-title">
+                        Menu items
+                      </div>
+
+                      <div className="menu-item-editor">
+                        <div className="form-group">
+                          <label>Item name</label>
+                          <input
+                            type="text"
+                            defaultValue="Traditional Breakfast"
+                          />
+                        </div>
+
+                        <div className="form-group">
+                          <label>Price (ETB)</label>
+                          <input
+                            type="number"
+                            defaultValue="250"
+                          />
+                        </div>
+
+                        <button className="remove-item-btn">
+                          <Trash2 size={15} />
+                        </button>
+                      </div>
+
+                      <button className="add-item-btn">
+                        <Plus size={15} />
+                        Add menu item
+                      </button>
+
+                      <div className="form-group">
+                        <label>Footer / additional information</label>
+                        <textarea
+                          rows={2}
+                          defaultValue="Prices include applicable taxes. Please inform our staff of any allergies."
+                        />
+                      </div>
+                    </div>
+
+                    <div className="modal-footer">
+                      <button
+                        className="secondary-btn"
+                        onClick={() => setMenuModalOpen(false)}
+                      >
+                        Cancel
+                      </button>
+
+                      <button
+                        className="primary-btn"
+                        onClick={() => {
+                          // Later:
+                          // 1. Collect form values
+                          // 2. Pass menu data to PDFLib
+                          // 3. Generate the PDF
+                          // 4. Refresh the preview/download URL
+
+                          setMenuModalOpen(false);
+                        }}
+                      >
+                        <Save size={16} />
+                        Save Menu
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </>
           )}
           {page === 'rooms' && (
             <>
@@ -262,6 +505,7 @@ export default function Admin() {
               </div>
             </>
           )}
+
         </div>
       </div>
     </div>

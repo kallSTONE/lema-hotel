@@ -342,6 +342,7 @@ export const t = {
     announcements: { en: 'Announcements', am: 'ማስታወቂያዎች', had: 'Announcements' },
     rooms: { en: 'Rooms', am: 'ክፍሎች', had: 'Baatte' },
     settings: { en: 'Settings', am: 'ቅንብሮች', had: 'Settings' },
+    menu: { en: 'Menu', am: 'ሜኑ', had: 'Mennu' },
     goodMorning: { en: 'Good morning, Admin.', am: 'እንደምን አደሩ፣ አስተዳዳሪ።', had: 'Good morning, Admin.' },
     newBooking: { en: 'New booking', am: 'አዲስ ቆይታ', had: 'New booking' },
     totalBookings: { en: 'Total bookings', am: 'ጠቅላላ ተቀባይነቶች', had: 'Total bookings' },
