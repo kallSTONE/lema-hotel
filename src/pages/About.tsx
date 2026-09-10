@@ -6,7 +6,7 @@ export default function About() {
   const { lang } = useLang();
   return (
     <main> 
-      <Page Header  title={tr(t.about.title, lang)} subtitle={tr(t.about.subtitle, lang)} image="/assets/Images/BuildingView.jpg" />
+      <PageHeader  title={tr(t.about.title, lang)} subtitle={tr(t.about.subtitle, lang)} image="/assets/Images/BuildingView.jpg" />
       <section className="about-history section-pad">
         <div className="about-history-grid">
           <div className="about-history-text">
